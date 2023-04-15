@@ -1,0 +1,1262 @@
+<style>
+  html {
+    font-size: 62.5%;
+    font-family: "Poppins", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 100vw;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 0;
+    transition: 0.25s linear;
+  }
+
+  .card-item {
+    width: 48.5%;
+    height: 80rem;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    overflow: hidden;
+    border-radius: 5px;
+    border: 1px solid gray;
+    align-items: center;
+    transition: 0.25s linear;
+    position: relative;
+  }
+  .card-item:hover{
+    background-color: #e8eaed;
+  }
+  .type,
+  .quantity,
+  .price {
+    margin-left: 0;
+    pointer-events: none;
+  }
+
+  .price div,
+  .quantity div,
+  .type div {
+    margin-left: 1rem;
+  }
+
+  .card-item-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    overflow:auto;
+    justify-content: center;
+    font-size: 1.4rem;
+    height: 80%;
+    padding-top: 0rem;
+
+  }
+
+  .card-item-img {
+    width: 100%;
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    height: 20%;
+    pointer-events: none;
+  }
+
+  img {
+    max-width: 30%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+  }
+
+  .CC:visited {
+    color: blue;
+  }
+
+  .CC:hover {
+    cursor: pointer;
+    color: red;
+  }
+
+  .CC {
+    transition: 0.25s linear;
+  }
+
+  ul {
+    user-select: none;
+     pointer-events: none;
+  }
+
+  li {
+    user-select: none;
+     pointer-events: none;
+  }
+
+  h4,
+  h3 {
+    user-select: none;
+     pointer-events: none;
+  }
+
+  .header {
+    width: 100%;
+    max-width: 1800px;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    background: #1D1D1D;
+    margin: 1rem auto;
+    align-items: center;
+    position: relative;
+  }
+
+  .navbar {
+    font-size: 2.4rem;
+    user-select: none;
+    color: #FFFFFF;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+  }
+
+  .back_home_page,
+  .exit,
+  .view,
+  .update,
+  .delete,
+  .add {
+    font-size: 2rem;
+    margin-left: 2rem;
+    color: #8D8D8D;
+    transition: all 0.25s linear;
+    user-select: none;
+    cursor: pointer;
+
+  }
+
+  .back_home_page:hover,
+  .update:hover,
+  .delete:hover,
+  .add:hover,
+  .view:hover,
+  .exit:hover {
+    color: white;
+    text-decoration: underline 0.5px white;
+  }
+  .form_update_product,
+  .form_delete_product,
+  .form_add_product {
+    max-width: 50rem;
+    width: 100%;
+    border: 1px solid #CED4DA;
+    margin: 5rem auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    background-color: black;
+  }
+  .update_submit_product,
+  .update_select_product,
+  .delete_select_product,
+  .delete_submit_product,
+  .input_submit_product,
+  .input_select_product,
+  .input_update_product,
+  .input_product {
+    width: 100%;
+    height: 5rem;
+    margin: 1rem auto;
+    font-size: 2rem;
+    padding: 1rem;
+    outline: none;
+    background-color: black;
+    border: 1px solid white;
+  }
+  .update_submit_product,
+  .delete_submit_product,
+  .input_submit_product {
+    border: 1px solid black;
+    transition: 0.25s linear;
+    background-color: #8D8D8D;
+  }
+  .update_submit_product:hover,
+  .delete_submit_product:hover,
+  .input_submit_product:hover {
+    background-color: #F2F2F2;
+  }
+  .update_submit_product,
+  .delete_submit_product,
+  .input_submit_product{
+    border: 1px solid black;
+    transition: all 0.8s ease-out;
+    background: linear-gradient(to bottom left, #8D8D8D 50%, white 50%)top right;
+    background-size: 230% 400%; 
+    color: white;
+  }
+  .update_submit_product:hover,
+  .delete_submit_product:hover,
+  .input_submit_product:hover{
+     background-position: bottom left;
+     color: black;
+  }
+  .container_name_product1,
+  .container_link_img_product,
+  .container_link_img_product1,
+  .container_quantity_product,
+  .container_quantity_product1,
+  .container_price_product1,
+  .container_price_product,
+  .container_fullDes_product1,
+  .container_fullDes_product,
+  .container_tinyDes_product1,
+  .container_tinyDes_product,
+  .container_name_product {
+    position: relative;
+  }
+  .label_name_product1,
+  .label_link_img_product,
+  .label_link_img_product1,
+  .label_quantity_product,
+  .label_quantity_product1,
+  .label_price_product1,
+  .label_price_product,
+  .label_fullDes_product1,
+  .label_fullDes_product,
+  .label_tinyDes_product1,
+  .label_tinyDes_product,
+  .label_name_product {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    left: 0;
+    font-size: 2rem;
+    margin-left: 1.2rem;
+    user-select: none;
+    transition: 0.25s linear;
+    pointer-events: none;
+    color: white;
+  }
+  .input_update_product,
+  .input_select_product {
+    color: white;
+  }
+  .input_product32:focus,
+  .input_product12:focus,
+  .input_product6:focus,
+  .input_product62:focus,
+  .input_product5:focus,
+  .input_product52:focus,
+  .input_product42:focus,
+  .input_product4:focus,
+  .input_product3:focus,
+  .input_product2:focus,
+  .input_product22:focus,
+  .input_product1:focus {
+    border: 1px solid #7952B3;
+  }
+  .input_product{
+    color: white;
+  }
+  .input_product1:not(:placeholder-shown)+.label_name_product,
+  .input_product1:focus+.label_name_product {
+    top: 0.75rem;
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    background-color: black;
+  }
+
+  .input_product12:not(:placeholder-shown)+.label_name_product1,
+  .input_product12:focus+.label_name_product1 {
+    top: 0.75rem;
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    background-color: black;
+  }
+
+  .input_product2:not(:placeholder-shown)+.label_tinyDes_product,
+  .input_product2:focus+.label_tinyDes_product {
+    top: 0.75rem;
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    background-color: black;
+  }
+
+  .input_product22:not(:placeholder-shown)+.label_tinyDes_product1,
+  .input_product22:focus+.label_tinyDes_product1 {
+    top: 0.75rem;
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    background-color: black;
+  }
+
+  .input_product3:not(:placeholder-shown)+.label_fullDes_product,
+  .input_product3:focus+.label_fullDes_product {
+    top: 0.75rem;
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    background-color: black;
+  }
+
+  .input_product32:not(:placeholder-shown)+.label_fullDes_product1,
+  .input_product32:focus+.label_fullDes_product1 {
+    top: 0.75rem;
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    background-color: black;
+  }
+
+  .input_product4:not(:placeholder-shown)+.label_price_product,
+  .input_product4:focus+.label_price_product {
+    top: 0.75rem;
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    background-color: black;
+  }
+
+  .input_product42:not(:placeholder-shown)+.label_price_product1,
+  .input_product42:focus+.label_price_product1 {
+    top: 0.75rem;
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    background-color: black;
+  }
+
+  .input_product5:not(:placeholder-shown)+.label_quantity_product,
+  .input_product5:focus+.label_quantity_product {
+    top: 0.75rem;
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    background-color: black;
+  }
+
+  .input_product52:not(:placeholder-shown)+.label_quantity_product1,
+  .input_product52:focus+.label_quantity_product1 {
+    top: 0.75rem;
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    background-color: black;
+  }
+
+  .input_product6:not(:placeholder-shown)+.label_link_img_product,
+  .input_product6:focus+.label_link_img_product {
+    top: 0.75rem;
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    background-color: black;
+  }
+
+  .input_product62:not(:placeholder-shown)+.label_link_img_product1,
+  .input_product62:focus+.label_link_img_product1 {
+    top: 0.75rem;
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    background-color: black;
+  }
+  .form_update_product,
+  .form_delete_product,
+  .form_add_product {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 4.65rem;
+    right: 50rem;
+    transition: 0.25s linear;
+  }
+  .name_error1,
+  .tinyDes_error1,
+  .tinyDes_error,
+  .name_error,
+  .quantity_error,
+  .quantity_error1,
+  .price_error1,
+  .price_error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-left: 1.1rem;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    user-select: none;
+    display: none;
+    color: red;
+  }
+
+  .back_home_page a {
+    color: #ADAEAE;
+    text-decoration: none;
+    transition: all 0.25s linear;
+  }
+
+  .exit a {
+    color: #ADAEAE;
+    text-decoration: none;
+    transition: all 0.25s linear;
+  }
+
+  .child_menu::before {
+    content: "";
+    width: 120%;
+    height: 3.3rem;
+    top: 0rem;
+    left: 0;
+    position: absolute;
+    transform: translateY(-100%);
+  }
+
+  .child_menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 5.8rem;
+    right: 2.5rem;
+    transition: all 0.25s linear;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+  }
+
+  .view {
+    position: relative;
+  }
+
+  .all_product,
+  .type_product {
+    width: 120%;
+    background-color: #5F6368;
+    border: 1px solid #DFDFDF;
+    text-align: center;
+    color: white;
+    transition: 0.25s linear;
+  }
+
+  .view:hover .child_menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .type_product_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 149%;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.25s linear;
+  }
+
+  .type_product_jewelry,
+  .type_product_another,
+  .type_product_laptop_pc,
+  .type_product_shirt_shoe,
+  .type_product_camera,
+  .type_product_phone,
+  .type_product_book {
+    width: 150%;
+    background-color: #5F6368;
+    border: 1px solid #DFDFDF;
+    text-align: center;
+    color: white;
+    transition: 0.25s linear;
+    margin-left: -0.05rem;
+    margin-top: -1px;
+  }
+
+  .type_product:hover .type_product_container {
+    opacity: 1;
+    visibility: visible;
+  }
+  .type_product:hover,
+  .all_product:hover,
+  .type_product_jewelry:hover,
+  .type_product_another:hover,
+  .type_product_laptop_pc:hover,
+  .type_product_shirt_shoe:hover,
+  .type_product_camera:hover,
+  .type_product_phone:hover,
+  .type_product_book:hover {
+    background-color: #F7F7F7;
+    color: #212529;
+    border: 1px solid black;
+    margin-bottom: 0.5px;
+  }
+  .Submit_Product1,
+  .Submit_Product {
+    position: absolute;
+    top: 0.1rem;
+    left: 0;
+    z-index: -99;
+    width: 50%;
+  }
+  .View_Product1,
+  .View_Product {
+    width: 100%;
+  }
+
+  .notification {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .back_home_page:visited,
+  .linkExit:visited {
+    color: #8D8D8D;
+  }
+
+  .back_home_page:hover,
+  .linkExit:hover {
+    color: #FFFFFF;
+  }
+
+  .type_product_book {
+    margin-top: 0;
+  }
+
+  .all_product {
+    margin-top: -1px;
+  }
+
+  .container {
+    margin-top: -2rem;
+  }
+  .update_select_product,
+  .delete_select_product{
+    color: white;
+  }
+  #demo {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+  position: absolute;
+  top:50%;
+  font-size: 2rem;
+  left:35%;
+  transform: translateX(100%);
+  transform:  translateY(-50%);
+  color: white;
+  user-select: none;
+  width: 42rem;
+}
+ #demo1{
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+  position: absolute;
+  top:0%;
+  font-size: 2rem;
+  left:50%;
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+  color: white;
+  opacity: 0;
+  visibility: hidden;
+ }
+  img{
+    user-select: none;
+    pointer-events: none;
+  }
+  .clone_old_name,
+  .old_name_from_server,
+  .form_clone_submit_update_product{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .form_click_all_product_to_buy,
+  .form_click_another_product_to_buy,
+  .form_click_jewelry_product_to_buy,
+  .form_click_laptop_pc_product_to_buy,
+  .form_click_shirt_shoe_product_to_buy,
+  .form_click_camera_product_to_buy,
+  .form_click_phone_product_to_buy,
+  .form_click_book_product_to_buy{
+    position: absolute;
+    top:0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .form_buy_all_product,
+  .form_buy_another_product,
+  .form_buy_jewelry_product,
+  .form_buy_laptop_pc_product,
+  .form_buy_shirt_shoe_product,
+  .form_buy_camera_product,
+  .form_buy_phone_product,
+  .form_buy_book_product{
+    position: absolute;
+    bottom: 3rem;
+    right: 50%;
+    transform: translateX(50%);
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+  }
+  .price_money_all_product,
+  .total_money_all_product,
+  .submit_buy_all_product,
+  .quantity_all_product,
+  .price_money_another_product,
+  .total_money_another_product,
+  .submit_buy_another_product,
+  .quantity_another_product,
+  .price_money_jewelry_product,
+  .total_money_jewelry_product,
+  .submit_buy_jewelry_product,
+  .quantity_jewelry_product,
+  .price_money_laptop_pc_product,
+  .total_money_laptop_pc_product,
+  .submit_buy_laptop_pc_product,
+  .quantity_laptop_pc_product,
+  .price_money_shirt_shoe_product,
+  .total_money_shirt_shoe_product,
+  .submit_buy_shirt_shoe_product,
+  .quantity_shirt_shoe_product,
+  .price_money_camera_product,
+  .total_money_camera_product,
+  .submit_buy_camera_product,
+  .quantity_camera_product,
+  .price_money_phone_product,
+  .total_money_phone_product,
+  .submit_buy_phone_product,
+  .quantity_phone_product,
+  .price_money_book_product,
+  .total_money_book_product,
+  .submit_buy_book_product,
+  .quantity_book_product{
+    width: 100%;
+    height: 3rem;
+    transition: 0.25s linear;
+  }
+  .submit_buy_all_product,
+  .submit_buy_another_product,
+  .submit_buy_jewelry_product,
+  .submit_buy_laptop_pc_product,
+  .submit_buy_shirt_shoe_product,
+  .submit_buy_camera_product,
+  .submit_buy_phone_product,
+  .submit_buy_book_product{@
+    font-size: 1.6rem;
+    height: 5rem;
+    background-color: white;
+    outline: none;
+    border: none;
+    border: 1px solid black;
+  }
+  .quantity_all_product,
+  .quantity_another_product,
+  .quantity_jewelry_product,
+  .quantity_laptop_pc_product,
+  .quantity_shirt_shoe_product,
+  .quantity_camera_product,
+  .quantity_phone_product,
+  .quantity_book_product{
+    height: 5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #5f6368;
+    border-bottom: 1px solid #5f6368;
+    padding: 10rem auto;
+    background-color: white;
+    outline: none;
+  }
+  .price_money_all_product,
+  .total_money_all_product,
+  .price_money_another_product,
+  .total_money_another_product,
+  .price_money_jewelry_product,
+  .total_money_jewelry_product,
+  .price_money_laptop_pc_product,
+  .total_money_laptop_pc_product,
+  .price_money_shirt_shoe_product,
+  .total_money_shirt_shoe_product,
+  .price_money_camera_product,
+  .total_money_camera_product,
+  .price_money_phone_product,
+  .total_money_phone_product,
+  .price_money_book_product,
+  .total_money_book_product{
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    user-select: none;
+  }
+  .card-item:hover .quantity_book_product{
+    background-color: #e8eaed;
+  }
+  .card-item:hover .quantity_camera_product{
+    background-color: #e8eaed;
+  }
+  .card-item:hover .quantity_phone_product{
+    background-color: #e8eaed;
+  }
+  .card-item:hover .quantity_shirt_shoe_product{
+    background-color: #e8eaed;
+  }
+  .card-item:hover .quantity_laptop_pc_product{
+    background-color: #e8eaed;
+  }
+  .card-item:hover .quantity_jewelry_product{
+    background-color: #e8eaed;
+  }
+  .card-item:hover .quantity_another_product{
+    background-color: #e8eaed;
+  }
+  .card-item:hover .quantity_all_product{
+    background-color: #e8eaed;
+  }
+  .card-item:hover .submit_buy_book_product{
+    background-color: black;
+    color: white;
+  }
+  .card-item:hover .submit_buy_camera_product{
+    background-color: black;
+    color: white;
+  }
+  .card-item:hover .submit_buy_phone_product{
+    background-color: black;
+    color: white;
+  }
+  .card-item:hover .submit_buy_shirt_shoe_product{
+    background-color: black;
+    color: white;
+  }
+  .card-item:hover .submit_buy_laptop_pc_product{
+    background-color: black;
+    color: white;
+  }
+  .card-item:hover .submit_buy_jewelry_product{
+    background-color: black;
+    color: white;
+  }
+  .card-item:hover .submit_buy_another_product{
+    background-color: black;
+    color: white;
+  }
+  .card-item:hover .submit_buy_all_product{
+    background-color: black;
+    color: white;
+  }
+   .submit_buy_phone_product:active{
+     background-color: white;
+    color: black;
+  }
+  .submit_buy_book_product:active{
+     background-color: white;
+    color: black;
+  }
+  .submit_buy_camera_product:active{
+     background-color: white;
+    color: black;
+  }
+  .submit_buy_shirt_shoe_product:active{
+     background-color: white;
+    color: black;
+  }
+  .submit_buy_laptop_pc_product:active{
+     background-color: white;
+    color: black;
+  }
+  .submit_buy_jewelry_product:active{
+     background-color: white;
+    color: black;
+  }
+  .submit_buy_another_product:active{
+     background-color: white;
+    color: black;
+  }
+  .submit_buy_all_product:active{
+     background-color: white;
+    color: black;
+  }
+  .error_input_quantity_all_product,
+  .error_input_quantity_another_product,
+  .error_input_quantity_jewelry_product,
+  .error_input_quantity_laptop_pc_product,
+  .error_input_quantity_shirt_shoe_product,
+  .error_input_quantity_camera_product,
+  .error_input_quantity_phone_product,
+  .error_input_quantity_book_product{
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    transition: 0.25s linear;
+    opacity: 0;
+    visibility: hidden;
+    width: 200%;
+  }
+  .Total_buy_all_product,
+  .Price_buy_all_product,
+  .productId_buy_all_product,
+  .remainQuantity_buy_all_product,
+  .username_buy_all_product,
+  .Total_buy_another_product,
+  .Price_buy_another_product,
+  .productId_buy_another_product,
+  .remainQuantity_buy_another_product,
+  .username_buy_another_product,
+  .Total_buy_jewelry_product,
+  .Price_buy_jewelry_product,
+  .productId_buy_jewelry_product,
+  .remainQuantity_buy_jewelry_product,
+  .username_buy_jewelry_product,
+  .Total_buy_laptop_pc_product,
+  .Price_buy_laptop_pc_product,
+  .productId_buy_laptop_pc_product,
+  .remainQuantity_buy_laptop_pc_product,
+  .username_buy_laptop_pc_product,
+  .Total_buy_shirt_shoe_product,
+  .Price_buy_shirt_shoe_product,
+  .productId_buy_shirt_shoe_product,
+  .remainQuantity_buy_shirt_shoe_product,
+  .username_buy_shirt_shoe_product,
+  .Total_buy_camera_product,
+  .Price_buy_camera_product,
+  .productId_buy_camera_product,
+  .remainQuantity_buy_camera_product,
+  .username_buy_camera_product,
+  .Total_buy_phone_product,
+  .Price_buy_phone_product,
+  .productId_buy_phone_product,
+  .remainQuantity_buy_phone_product,
+  .username_buy_phone_product,
+  .Total_buy_book_product,
+  .Price_buy_book_product,
+  .productId_buy_book_product,
+  .remainQuantity_buy_book_product,
+  .username_buy_book_product{
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+  }
+  .remainQuantity_buy_book_product{
+    top:-10rem;
+  }
+  @media screen and (max-device-width: 334px){
+    .card-item-info{
+      padding-top: 90rem;
+    }
+    #demo{
+      opacity: 0;
+      visibility: hidden;
+    }
+    .form_add_product{
+      right: 0;
+      top:8rem;
+    }
+    .header{
+      width: 405px;
+    }
+  }
+  @media screen and (max-device-width: 769px) and (min-device-width: 334px){
+    .card-item-info{
+      padding-top: 78rem;
+    }
+    #demo{
+      opacity: 0;
+      visibility: hidden;
+    }
+    .form_add_product{
+      right: 27rem;
+      top:8rem;
+    }
+    .header{
+      width: 769px;
+    }
+  }
+  @media screen and (min-device-width: 769px) and (max-device-width: 993px){
+    .card-item-info{
+      padding-top: 15rem;
+    }
+        #demo{
+      opacity: 1;
+      visibility: visible;
+      left: 15%;
+      
+    }
+    .form_add_product{
+      right: 42rem;
+      top:8rem;
+    }
+    .header{
+      width: 993px
+    }
+  }
+   @media screen and (min-device-width: 993px) and (max-device-width: 1200px){
+    .card-item-info{
+      padding-top: 5rem;
+    }
+        #demo{
+      opacity: 1;
+      visibility: visible;
+      left: 19%;
+      
+    }
+    .form_add_product{
+      right: 56rem;
+      top:8rem;
+    }
+    .header{
+      width: 1200px;
+    }
+  }
+  @media screen and (min-device-width: 1200px){
+    .card-item-info{
+      padding-top: 0rem;
+    }
+      #demo{
+      opacity: 1;
+      visibility: visible;
+      left: 0%;
+      top:50%;
+      left: calc((100vw - 42rem) / 2 - 15rem);
+    }
+    .form_add_product{
+      right: 56rem;
+      top:8rem;
+    }
+  }
+</style>
+<style>.container_name_product1,.container_tinyDes_product1,.container_fullDes_product1,.container_price_product1,.input_update_product,.container_quantity_product1,.container_link_img_product1{opacity:0; visibility: hidden; display:none}</style>
+<div class="header">
+  <div class="navbar">
+    MENU
+  </div>
+  <div class="menu">
+    <div class="add" onclick="handle_click_add1()">
+      Thêm
+      <div class="form_add_product">
+        <form action="/users/dashboard" method="post" onsubmit="event.preventDefault();handle_submit_form_add_product()" enctype="multipart/form-data"
+          class="formAddProduct">
+          <div class="container_name_product">
+            <input type="text" class="input_product input_product1" placeholder=" " required autocomplete="off"
+              onclick="handle_click_input_name_product()" name="add_name_product">
+            <label for="name" class="label_name_product">Tên sản phẩm</label>
+            <label for="" class="name_error">Độ dài tên sản phẩm không được vượt quả 40 ký tự</label>
+          </div>
+          <div class="container_tinyDes_product">
+            <input type="text" class="input_product input_product2" placeholder=" " required autocomplete="off"
+              onclick="handle_click_input_tinyDes_product()" name="add_tinyDes_product">
+            <label for="tinyDes" class="label_tinyDes_product">Mô tả ngắn gọn</label>
+            <label for="" class="tinyDes_error">Độ dài của mô tả ngắn gọn không được vượt quả 80 ký tự</label>
+          </div>
+          <div class="container_fullDes_product">
+            <input type="text" class="input_product input_product3" placeholder=" " required autocomplete="off"
+              name="add_fullDes_product">
+            <label for="fullDes" class="label_fullDes_product">Mô tả chi tiết</label>
+          </div>
+          <div class="container_price_product">
+            <input type="text" class="input_product input_product4" placeholder=" " required autocomplete="off"
+              onclick="handle_click_input_price_product()" name="add_price_product">
+            <label for="price" class="label_price_product">Giá tiền (VD: 1234.0000)</label>
+            <label for="" class="price_error">Bạn cần phải nhập đúng định dạng</label>
+          </div>
+          <select name="add_select_product" id="" class="input_select_product">
+            <option value="book">Sách</option>
+            <option value="phone">Điện thoại</option>
+            <option value="camera">Máy chụp hình</option>
+            <option value="shirt_shoe">Quần áo - Giày dép</option>
+            <option value="laptop_pc">Máy tính</option>
+            <option value="jewelry">Đồ trang sức</option>
+            <option value="another">Khác</option>
+          </select>
+          <div class="container_quantity_product">
+            <input type="text" class="input_product input_product5" placeholder=" " required autocomplete="off"
+              onclick="handle_click_input_quantity_product()" name="add_quantity_product">
+            <label for="quantity" class="label_quantity_product">Số lượng</label>
+            <label for="" class="quantity_error">Bạn cần phải nhập đúng định dạng</label>
+          </div>
+          <div class="container_link_img_product">
+            <input type="file" class="input_product input_product6" placeholder=" " required autocomplete="off"
+              onclick="handle_click_input_link_img_product()" name="add_link_img_product" accept="image/*">
+            <label for="link_img" class="label_link_img_product" >Link hình ảnh</label>
+          </div>
+          <button type="submit" class="input_submit_product">Thêm sản phẩm</button>
+        </form>
+      </div>
+    </div>
+    <div class="delete" onclick="handle_click_delete_product1()">
+      Xoá
+      <div class="form_delete_product">
+    <form action="/users/dashboard" method="post" 
+        class="formDeleteProduct">
+        <select name="delete_select_product" id="" class="delete_select_product">
+            {{{messages.list_option_product}}}
+        </select>
+        <button type="submit" class="delete_submit_product">Xoá sản phẩm</button>
+    </form>
+</div>
+    </div>
+    <div class="update" onclick="handle_click_update_product()">
+      Sửa
+      <div class="form_update_product">
+    <form action="/users/dashboard" method="post" onsubmit="event.preventDefault();handle_submit_form_update_product();"
+        class="formUpdateProduct" enctype="multipart/form-data">
+        <select name="update_select_product" id="" class="update_select_product" onchange="handle_on_change_select_update_product()">
+            {{{messages.list_option_product1}}}
+        </select>
+        <div class="container_name_product1">
+            <input type="text" class="input_product input_product12" placeholder=" " required autocomplete="off"
+              onclick="handle_click_input_name_product1()" name="update_name_product" value="{{get_name_update_product}}">
+            <label for="name" class="label_name_product1">Tên sản phẩm</label>
+            <label for="" class="name_error1">Độ dài tên sản phẩm không được vượt quả 40 ký tự</label>
+          </div>
+          <div class="container_tinyDes_product1">
+            <input type="text" class="input_product input_product22" placeholder=" " required autocomplete="off"
+              onclick="handle_click_input_tinyDes_product1()" name="update_tinyDes_product" value="{{get_tinyDes_update_product}}">
+            <label for="tinyDes" class="label_tinyDes_product1">Mô tả ngắn gọn</label>
+            <label for="" class="tinyDes_error1">Độ dài của mô tả ngắn gọn không được vượt quả 80 ký tự</label>
+          </div>
+          <div class="container_fullDes_product1">
+            <input type="text" class="input_product input_product32" placeholder=" " required autocomplete="off"
+              name="update_fullDes_product" value="{{get_fullDes_update_product}}">
+            <label for="fullDes" class="label_fullDes_product1">Mô tả chi tiết</label>
+          </div>
+          <div class="container_price_product1">
+            <input type="text" class="input_product input_product42" placeholder=" " required autocomplete="off"
+              onclick="handle_click_input_price_product1()" name="update_price_product" value="{{get_price_update_product}}">
+            <label for="price" class="label_price_product1">Giá tiền (VD: 1234.0000)</label>
+            <label for="" class="price_error1">Bạn cần phải nhập đúng định dạng</label>
+          </div>
+          <select name="update_select_product" id="" class="input_update_product">
+            <option value={{update_select_option1}}>{{update_view_select_option1}}</option>
+            <option value={{update_select_option2}}>{{update_view_select_option2}}</option>
+            <option value={{update_select_option3}}>{{update_view_select_option3}}</option>
+            <option value={{update_select_option4}}>{{update_view_select_option4}}</option>
+            <option value={{update_select_option5}}>{{update_view_select_option5}}</option>
+            <option value={{update_select_option6}}>{{update_view_select_option6}}</option>
+            <option value={{update_select_option7}}>{{update_view_select_option7}}</option>
+          </select>
+          <div class="container_quantity_product1">
+            <input type="text" class="input_product input_product52" placeholder=" " required autocomplete="off"
+              onclick="handle_click_input_quantity_product1()" name="update_quantity_product" value="{{get_quantity_update_product}}">
+            <label for="quantity" class="label_quantity_product1">Số lượng</label>
+            <label for="" class="quantity_error1">Bạn cần phải nhập đúng định dạng</label>
+          </div>
+          <div class="container_link_img_product1">
+            <input type="file" class="input_product input_product62" placeholder=" " required autocomplete="off"
+              onclick="handle_click_input_link_img_product1()" name="add_link_img_product" accept="image/*">
+            <label for="link_img" class="label_link_img_product1">Link hình ảnh</label>
+          </div>
+          <input type="text" class="clone_old_name" name="clone_old_name" value="">
+        <button type="submit" class="update_submit_product" onclick="handle_click_submit_update_product()">Cập nhật thông tin sản phẩm</button>
+    </form>
+    <form action="/users/dashboard" method="post" class="form_clone_submit_update_product">
+      <input type="text" class="clone_select_update_product" value="" name="clone_select_update_product">
+    </form>
+    <div class="old_name_from_server">{{old_name}}</div>
+</div>
+    </div>
+    <div class="view" onmousemove="handle_mousemove_view_product1()">
+      Xem sản phẩm
+      <div class="child_menu">
+        <div class="type_product">
+          Theo Loại hàng
+          <div class="type_product_container">
+            <div class="type_product_book" onclick="handle_click_type_product_book()">
+              Sách
+              <form action="/users/dashboard" method="post" class="Submit_Product">
+                <input type="text" name="View_Product" value="" class="View_Product">
+              </form>
+            </div>
+            <div class="type_product_phone" onclick="handle_click_type_product_phone()">
+              Điện thoại
+            </div>
+            <div class="type_product_camera" onclick="handle_click_type_product_camera()">
+              Máy chụp hình
+            </div>
+            <div class="type_product_shirt_shoe" onclick="handle_click_type_product_shirt_shoe()">
+              Quần áo - Giày dép
+            </div>
+            <div class="type_product_laptop_pc" onclick="handle_click_type_product_laptop_pc()">
+              Máy tính
+            </div>
+            <div class="type_product_jewelry" onclick="handle_click_type_product_jewelry()">
+              Đồ trang sức
+            </div>
+            <div class="type_product_another" onclick="handle_click_type_product_another()">
+              Khác
+            </div>
+          </div>
+        </div>
+        <div class="all_product" onclick="handle_click_all_product()">
+          Tất cả mặt hàng
+          <form action="/users/dashboard" method="post" class="Submit_Product1">
+              <input type="text" name="View_Product_All" value="" class="View_Product1">
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="exit">
+      <a class="linkExit" href="/logout">Thoát</a>
+    </div>
+  </div>
+  <p id="demo"></p>
+  {{{messages.hichic}}} 
+</div>
+<div class="container">
+  {{{messages.data_dashboard}}}
+</div>
+{{{messages.notification}}}
+<script>
+   // Set the date we're counting down to
+var countDownDate = Number(document.querySelector('#demo1').innerHTML);
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML ="Phiên làm việc sẽ kết thúc sau: "+ days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000); 
+  function handle_click_add1() {
+    document.querySelector('.add').style.textDecoration = 'underline white solid';
+    document.querySelector('.add').style.color = 'white';
+    document.querySelector('.form_add_product').style.opacity = 1;
+    document.querySelector('.form_add_product').style.visibility = 'visible';
+    document.querySelector('.container').style.opacity = 0.1;
+    document.querySelector('.form_add_product').style.zIndex = 999;
+    document.querySelector('.form_add_product').style.color = 'white';
+    document.querySelector('.input_product1').style.zIndex = 1000;
+    document.querySelector('.input_product1').style.color = 'white';
+    document.querySelector('.input_product2').style.zIndex = 1000;
+    document.querySelector('.input_product2').style.color = 'white';
+    document.querySelector('.input_product3').style.zIndex = 1000;
+    document.querySelector('.input_product3').style.color = 'white';
+    document.querySelector('.input_product4').style.zIndex = 1000;
+    document.querySelector('.input_product4').style.color = 'white';
+    document.querySelector('.input_product5').style.zIndex = 1000;
+    document.querySelector('.input_product5').style.color = 'white';
+    document.querySelector('.input_product6').style.zIndex = 1000;
+    document.querySelector('.input_product6').style.color = 'white';
+    document.querySelector('.delete').style.textDecoration='';
+    document.querySelector('.delete').style.color='';
+    document.querySelector('.form_delete_product').style.opacity=0;
+    document.querySelector('.form_delete_product').style.visibility='hidden'; 
+    document.querySelector('.update').style.textDecoration='';
+    document.querySelector('.update').style.color='';
+    document.querySelector('.form_update_product').style.opacity=0;
+    document.querySelector('.form_update_product').style.visibility='hidden';
+    document.querySelector('.form_update_product').style.zIndex=-100;
+    document.querySelector('.container_name_product1').style.display='none';
+    document.querySelector('.container_tinyDes_product1').style.display='none';
+    document.querySelector('.container_fullDes_product1').style.display='none';
+    document.querySelector('.input_update_product').style.display='none';
+    document.querySelector('.container_price_product1').style.display='none';
+    document.querySelector('.container_quantity_product1').style.display='none';
+    document.querySelector('.container_link_img_product1').style.display='none';
+
+  }
+  function handle_mousemove_view_product1(){
+    document.querySelector('.add').style.textDecoration = '';
+    document.querySelector('.add').style.color = '';
+    document.querySelector('.form_add_product').style.opacity = 0;
+    document.querySelector('.form_add_product').style.visibility = 'hidden';
+    document.querySelector('.container').style.opacity = 1;
+    document.querySelector('.delete').style.textDecoration='';
+    document.querySelector('.delete').style.color='';
+    document.querySelector('.form_delete_product').style.opacity=0;
+    document.querySelector('.form_delete_product').style.visibility='hidden';
+    document.querySelector('.update').style.textDecoration='';
+    document.querySelector('.update').style.color='';
+    document.querySelector('.form_update_product').style.opacity=0;
+    document.querySelector('.form_update_product').style.visibility='hidden'; 
+    document.querySelector('.container_name_product1').style.display='none';
+    document.querySelector('.container_tinyDes_product1').style.display='none';
+    document.querySelector('.container_fullDes_product1').style.display='none';
+    document.querySelector('.input_update_product').style.display='none';
+    document.querySelector('.container_price_product1').style.display='none';
+    document.querySelector('.container_quantity_product1').style.display='none';
+    document.querySelector('.container_link_img_product1').style.display='none';
+  }
+  function handle_click_delete_product1(){
+    document.querySelector('.delete').style.textDecoration='underline white solid';
+    document.querySelector('.delete').style.color='white';
+    document.querySelector('.form_delete_product').style.opacity=1;
+    document.querySelector('.form_delete_product').style.visibility='visible'; 
+    document.querySelector('.add').style.textDecoration='';
+    document.querySelector('.add').style.color='';
+    document.querySelector('.form_add_product').style.opacity=0;
+    document.querySelector('.form_add_product').style.visibility='hidden';
+    document.querySelector('.form_add_product').style.zIndex=-100;
+    document.querySelector('.container').style.opacity = 0.1;
+    document.querySelector('.form_delete_product').style.zIndex = 999;
+    document.querySelector('.form_update_product').style.zIndex = -100;
+    document.querySelector('.update').style.textDecoration='';
+    document.querySelector('.update').style.color='';
+    document.querySelector('.form_update_product').style.opacity=0;
+    document.querySelector('.form_update_product').style.visibility='hidden';
+    document.querySelector('.container_name_product1').style.display='none';
+    document.querySelector('.container_tinyDes_product1').style.display='none';
+    document.querySelector('.container_fullDes_product1').style.display='none';
+    document.querySelector('.input_update_product').style.display='none';
+    document.querySelector('.container_price_product1').style.display='none';
+    document.querySelector('.container_quantity_product1').style.display='none';
+    document.querySelector('.container_link_img_product1').style.display='none';
+  }
+  function handle_click_update_product(){
+    document.querySelector('.update').style.textDecoration='underline white solid';
+    document.querySelector('.update').style.color='white';
+    document.querySelector('.add').style.textDecoration='';
+    document.querySelector('.add').style.color='';
+    document.querySelector('.form_add_product').style.opacity=0;
+    document.querySelector('.form_add_product').style.visibility='hidden';
+    document.querySelector('.delete').style.textDecoration='';
+    document.querySelector('.delete').style.color='';
+    document.querySelector('.form_delete_product').style.opacity=0;
+    document.querySelector('.form_delete_product').style.visibility='hidden'; 
+    document.querySelector('.container').style.opacity = 0.1;
+    document.querySelector('.form_update_product').style.zIndex = 999;
+    document.querySelector('.form_delete_product').style.zIndex=-100;
+    document.querySelector('.form_add_product').style.zIndex=-100;
+    document.querySelector('.form_update_product').style.opacity=1;
+    document.querySelector('.form_update_product').style.visibility='visible'; 
+  }
+</script>
+{{{messages.lll}}}
+{{{messages.sofm}}}

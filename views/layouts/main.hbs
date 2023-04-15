@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js">
+    {{!-- reset css browser ve mac dinh --}}
+    <link rel="stylesheet" href="../../public/reset.css">
+    {{!-- su dung font awesome de xai icon --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+
+<body>
+    {{{body}}}
+    <script>
+        function handleSubmitFormLogin() {
+            var username = document.querySelector('#usernameLogin');
+            var password = document.querySelector('#passwordLogin');
+            if (username.value == '') {
+                document.querySelector('#warningUsernameLogin').innerHTML = 'Bạn không được để trống trường này'
+            }
+            if (password.value == '') {
+                document.querySelector('#warningPasswordLogin').innerHTML = 'Bạn không được để trống trường này'
+            }
+            if (username.value != '' && password.value != '') {
+                document.querySelector('.formLoginSubmit').submit();
+            }
+        }
+        function handleOnInputUsernameLogin() {
+            document.querySelector('#warningUsernameLogin').innerHTML = '';
+        }
+        function handleOnInputPasswordLogin() {
+            document.querySelector('#warningPasswordLogin').innerHTML = '';
+        }
+        function handleSubmitRegisterForm() {
+            var username = document.querySelector('#usernameRegister');
+            var password = document.querySelector('#passwordRegister');
+            var email = document.querySelector('#emailRegister');
+            var password2 = document.querySelector('#passwordRegisterRepeat');
+            if (password2.value != password.value) {
+                password2.style.borderColor = 'red';
+            }
+            if (username.value != '' && password.value != '' && email.value != '' && password2.value != '' && password.value == password2.value) {
+                document.querySelector('.formRegister').submit();
+            }
+        }
+        function handleOnInputUsernameRegister() {
+            var username = document.querySelector('#usernameRegister');
+            username.style.borderColor = '';
+        }
+        function handleOnInputPasswordRegister() {
+            var password = document.querySelector('#passwordRegister');
+            password.style.borderColor = '';
+        }
+        function handleOnInputEmailRegister() {
+            var email = document.querySelector('#emailRegister');
+            email.style.borderColor = '';
+        }
+        function handleOnInputPasswordRegisterRepeat() {
+            var password2 = document.querySelector('#passwordRegisterRepeat');
+            password2.style.borderColor = '';
+        }
+        function handle_click_add() {
+            document.querySelector('.add').style.textDecoration = 'underline white solid';
+            document.querySelector('.add').style.color = 'white';
+            document.querySelector('.form_add_product').style.opacity = 1;
+            document.querySelector('.form_add_product').style.visibility = 'visible';
+            document.querySelector('.delete').style.textDecoration = '';
+            document.querySelector('.delete').style.color = '';
+            document.querySelector('.form_delete_product').style.opacity = 0;
+            document.querySelector('.form_delete_product').style.visibility = 'hidden';
+        }
+        function handle_click_input_name_product() {
+            var tsp = document.querySelector('.input_product1');
+            tsp.style.border = '';
+            document.querySelector('.name_error').style.display = '';
+            document.querySelector('.name_error').style.zIndex = 0;
+            document.querySelector('.label_tinyDes_product').style.display = '';
+        }
+
+        function handle_click_input_name_product1() {
+            var tsp = document.querySelector('.input_product12');
+            tsp.style.border = '';
+            document.querySelector('.name_error1').style.display = '';
+            document.querySelector('.name_error1').style.zIndex = 0;
+            document.querySelector('.label_tinyDes_product1').style.display = '';
+        }
+        function handle_click_input_tinyDes_product() {
+            var mtng = document.querySelector('.input_product2');
+            mtng.style.border = '';
+            document.querySelector('.tinyDes_error').style.display = '';
+            document.querySelector('.tinyDes_error').style.zIndex = 0;
+            document.querySelector('.label_fullDes_product').style.display = '';
+
+        }
+
+        function handle_click_input_tinyDes_product1() {
+            var mtng = document.querySelector('.input_product22');
+            mtng.style.border = '';
+            document.querySelector('.tinyDes_error1').style.display = '';
+            document.querySelector('.tinyDes_error1').style.zIndex = 0;
+            document.querySelector('.label_fullDes_product1').style.display = '';
+        }
+        function handle_click_input_price_product() {
+            var price = document.querySelector('.input_product4');
+            price.style.border = '';
+            document.querySelector('.price_error').style.display = '';
+        }
+
+        function handle_click_input_price_product1() {
+            var price = document.querySelector('.input_product42');
+            price.style.border = '';
+            document.querySelector('.price_error1').style.display = '';
+        }
+        function handle_click_input_quantity_product() {
+            var sl = document.querySelector('.input_product5');
+            sl.style.border = '';
+            document.querySelector('.quantity_error').style.display = '';
+            document.querySelector('.quantity_error').innerHTML = "";
+            document.querySelector('.label_link_img_product').style.display = 'block';
+        }
+
+        function handle_click_input_quantity_product1() {
+            var sl = document.querySelector('.input_product52');
+            sl.style.border = '';
+            document.querySelector('.quantity_error1').style.display = '';
+            document.querySelector('.quantity_error1').innerHTML = "";
+            document.querySelector('.label_link_img_product1').style.display = 'block';
+
+        }
+        function handle_submit_form_add_product() {
+            const regExPrice = /^[0-9]{0,19}\.[0-9]{4}$/;
+            var price = document.querySelector('.input_product4');
+            if (regExPrice.test(price.value) == false) {
+                price.style.border = '2px solid red';
+                document.querySelector('.price_error').style.display = 'block';
+            }
+            var sl = document.querySelector('.input_product5');
+            if (isNaN(sl.value) == true) {
+                sl.style.border = '2px solid red';
+                document.querySelector('.quantity_error').style.display = 'block';
+                document.querySelector('.quantity_error').innerHTML = "Bạn phải nhập vào 1 số có giá trị từ: 0 => +2147483647";
+                document.querySelector('.label_link_img_product').style.display = 'none';
+            }
+            else {
+                if (Number(sl.value) < 0 || Number(sl.value) > 2147483647) {
+                    sl.style.border = '2px solid red';
+                    document.querySelector('.quantity_error').style.display = 'block';
+                    document.querySelector('.quantity_error').innerHTML = "Bạn phải nhập vào 1 số có giá trị từ: 0 => +2147483647";
+                    document.querySelector('.label_link_img_product').style.display = 'none';
+                }
+            }
+            var tsp = document.querySelector('.input_product1');
+            if (tsp.value.length > 40) {
+                tsp.style.border = '2px solid red';
+                document.querySelector('.name_error').style.display = 'block';
+                document.querySelector('.name_error').style.zIndex = 10;
+                document.querySelector('.label_tinyDes_product').style.display = 'none';
+            }
+            var mtng = document.querySelector('.input_product2');
+            if (mtng.value.length > 80) {
+                mtng.style.border = '2px solid red';
+                document.querySelector('.tinyDes_error').style.display = 'block';
+                document.querySelector('.tinyDes_error').style.zIndex = 10;
+                document.querySelector('.label_fullDes_product').style.display = 'none';
+            }
+            if (regExPrice.test(price.value) == true && isNaN(sl.value) == false && Number(sl.value) >= 0 && Number(sl.value) <= 2147483647 && tsp.value.length <= 40 && mtng.value.length <= 80) {
+                document.querySelector('.formAddProduct').submit();
+            }
+        }
+        function handle_click_submit_update_product() {
+            const regExPrice = /^[0-9]{0,19}\.[0-9]{4}$/;
+            var price = document.querySelector('.input_product42');
+            if (regExPrice.test(price.value) == false) {
+                price.style.border = '2px solid red';
+                document.querySelector('.price_error1').style.display = 'block';
+            }
+            var sl = document.querySelector('.input_product52');
+            if (isNaN(sl.value) == true) {
+                sl.style.border = '2px solid red';
+                document.querySelector('.quantity_error1').style.display = 'block';
+                document.querySelector('.quantity_error1').innerHTML = "Bạn phải nhập vào 1 số có giá trị từ: 0 => +2147483647";
+                document.querySelector('.label_link_img_product1').style.display = 'none';
+            }
+            else {
+                if (Number(sl.value) < 0 || Number(sl.value) > 2147483647) {
+                    sl.style.border = '2px solid red';
+                    document.querySelector('.quantity_error1').style.display = 'block';
+                    document.querySelector('.quantity_error1').innerHTML = "Bạn phải nhập vào 1 số có giá trị từ: 0 => +2147483647";
+                    document.querySelector('.label_link_img_product1').style.display = 'none';
+                }
+            }
+            var tsp = document.querySelector('.input_product12');
+            if (tsp.value.length > 40) {
+                tsp.style.border = '2px solid red';
+                document.querySelector('.name_error1').style.display = 'block';
+                document.querySelector('.name_error1').style.zIndex = 10;
+                document.querySelector('.label_tinyDes_product1').style.display = 'none';
+            }
+            var mtng = document.querySelector('.input_product22');
+            if (mtng.value.length > 80) {
+                mtng.style.border = '2px solid red';
+                document.querySelector('.tinyDes_error1').style.display = 'block';
+                document.querySelector('.tinyDes_error1').style.zIndex = 10;
+                document.querySelector('.label_fullDes_product1').style.display = 'none';
+            }
+            if (regExPrice.test(price.value) == true && isNaN(sl.value) == false && Number(sl.value) >= 0 && Number(sl.value) <= 2147483647 && tsp.value.length <= 40 && mtng.value.length <= 80&&document.querySelector('.input_product62').value!='') {
+                document.querySelector('.clone_old_name').value = document.querySelector('.old_name_from_server').innerHTML;
+                document.querySelector('.formUpdateProduct').submit();
+            }
+        }
+        function handle_click_all_product() {
+            document.querySelector('.View_Product1').value = "OK";
+            document.querySelector('.Submit_Product1').submit();
+        }
+        function handle_mousemove_view_product() {
+            document.querySelector('.delete').style.textDecoration = '';
+            document.querySelector('.delete').style.color = '';
+            document.querySelector('.form_delete_product').style.opacity = 0;
+            document.querySelector('.form_delete_product').style.visibility = 'hidden';
+            document.querySelector('.add').style.textDecoration = '';
+            document.querySelector('.add').style.color = '';
+            document.querySelector('.form_add_product').style.opacity = 0;
+            document.querySelector('.form_add_product').style.visibility = 'hidden';
+            document.querySelector('.container').style.opacity = 1;
+
+        }
+        function handle_click_type_product_book() {
+            document.querySelector('.View_Product').value = '1';
+            document.querySelector('.Submit_Product').submit();
+        }
+        function handle_click_type_product_phone() {
+            document.querySelector('.View_Product').value = '2';
+            document.querySelector('.Submit_Product').submit();
+        }
+        function handle_click_type_product_camera() {
+            document.querySelector('.View_Product').value = '3';
+            document.querySelector('.Submit_Product').submit();
+        }
+        function handle_click_type_product_shirt_shoe() {
+            document.querySelector('.View_Product').value = '4';
+            document.querySelector('.Submit_Product').submit();
+        }
+        function handle_click_type_product_laptop_pc() {
+            document.querySelector('.View_Product').value = '5';
+            document.querySelector('.Submit_Product').submit();
+        }
+        function handle_click_type_product_jewelry() {
+            document.querySelector('.View_Product').value = '6';
+            document.querySelector('.Submit_Product').submit();
+        }
+        function handle_click_type_product_another() {
+            document.querySelector('.View_Product').value = '7';
+            document.querySelector('.Submit_Product').submit();
+        }
+        function handle_onload_notification() {
+            console.log(document.querySelector('.notification'));
+        }
+        window.onload = function () {
+            if (document.querySelector('.notification') != null) {
+                if (document.querySelector('.notification').innerHTML == 'fail') {
+                    alert('Thêm sản phẩm không thành công, tên sản phẩm này đã tồn tại!');
+                }
+                if (document.querySelector('.notification').innerHTML == 'success') {
+                    alert('Thêm sản phẩm thành công!');
+                }
+                if (document.querySelector('.notification').innerHTML == 'delete_success') {
+                    alert('Xoá sản phẩm thành công!');
+                }
+                if (document.querySelector('.notification').innerHTML == 'time_out') {
+                    alert('Phiên làm việc đã hết hạn, xin mời đăng nhập lại!');
+                }
+                if (document.querySelector('.notification').innerHTML == 'update_success') {
+                    alert('Đã cập nhật thông tin cho sản phẩm!');
+                }
+                if (document.querySelector('.notification').innerHTML == 'buy_success') {
+                    alert('Mua sản phẩm thành công!');
+                }
+            }
+        }
+        function handle_click_delete_product() {
+            document.querySelector('.delete').style.textDecoration = 'underline white solid';
+            document.querySelector('.delete').style.color = 'white';
+            document.querySelector('.form_delete_product').style.opacity = 1;
+            document.querySelector('.form_delete_product').style.visibility = 'visible';
+            document.querySelector('.add').style.textDecoration = '';
+            document.querySelector('.add').style.color = '';
+            document.querySelector('.form_add_product').style.opacity = 0;
+            document.querySelector('.form_add_product').style.visibility = 'hidden';
+            //document.querySelector('.container').style.opacity=1;
+        }
+        function handle_on_change_select_update_product() {
+            if (document.querySelector('.update_select_product').value != '---Chọn sản phẩm cần cập nhật thông tin---') {
+                document.querySelector('.clone_select_update_product').value = document.querySelector('.update_select_product').value;
+                document.querySelector('.form_clone_submit_update_product').submit();
+            }
+        }
+        function handle_on_input_quantity_product() {
+            console.log(event.currentTarget.parentElement.querySelector('.price_money_book_product'));
+            var msg = "Thành tiền: ";
+            var price = document.querySelector('.price_money_book_product').innerHTML;
+            var price1 = price.lastIndexOf(".");
+            var price2 = price.slice(10, price1);
+            var total = Number(document.querySelector('.quantity_book_product').value) * Number(price2);
+            document.querySelector('.total_money_book_product').innerHTML = "Thành tiền: " + total.toString() + "₫";
+        }
+        function handle_on_input_quantity_product1() {
+            console.log(event.currentTarget.parentElement.querySelector('.price_money_phone_product'));
+            var msg = "Thành tiền: ";
+            var price = document.querySelector('.price_money_phone_product').innerHTML;
+            var price1 = price.lastIndexOf(".");
+            var price2 = price.slice(10, price1);
+            var total = Number(document.querySelector('.quantity_phone_product').value) * Number(price2);
+            document.querySelector('.total_money_phone_product').innerHTML = "Thành tiền: " + total.toString() + "₫";
+        }
+        function handle_on_input_quantity_product2() {
+            console.log(event.currentTarget.parentElement.querySelector('.price_money_camera_product'));
+            var msg = "Thành tiền: ";
+            var price = document.querySelector('.price_money_camera_product').innerHTML;
+            var price1 = price.lastIndexOf(".");
+            var price2 = price.slice(10, price1);
+            var total = Number(document.querySelector('.quantity_camera_product').value) * Number(price2);
+            document.querySelector('.total_money_camera_product').innerHTML = "Thành tiền: " + total.toString() + "₫";
+        }
+        function handle_on_input_quantity_product3() {
+            console.log(event.currentTarget.parentElement.querySelector('.price_money_shirt_shoe_product'));
+            var msg = "Thành tiền: ";
+            var price = document.querySelector('.price_money_shirt_shoe_product').innerHTML;
+            var price1 = price.lastIndexOf(".");
+            var price2 = price.slice(10, price1);
+            var total = Number(document.querySelector('.quantity_shirt_shoe_product').value) * Number(price2);
+            document.querySelector('.total_money_shirt_shoe_product').innerHTML = "Thành tiền: " + total.toString() + "₫";
+        }
+        function handle_on_input_quantity_product4() {
+            console.log(event.currentTarget.parentElement.querySelector('.price_money_laptop_pc_product'));
+            var msg = "Thành tiền: ";
+            var price = document.querySelector('.price_money_laptop_pc_product').innerHTML;
+            var price1 = price.lastIndexOf(".");
+            var price2 = price.slice(10, price1);
+            var total = Number(document.querySelector('.quantity_laptop_pc_product').value) * Number(price2);
+            document.querySelector('.total_money_laptop_pc_product').innerHTML = "Thành tiền: " + total.toString() + "₫";
+        }
+        function handle_on_input_quantity_product5() {
+            console.log(event.currentTarget.parentElement.querySelector('.price_money_jewelry_product'));
+            var msg = "Thành tiền: ";
+            var price = document.querySelector('.price_money_jewelry_product').innerHTML;
+            var price1 = price.lastIndexOf(".");
+            var price2 = price.slice(10, price1);
+            var total = Number(document.querySelector('.quantity_jewelry_product').value) * Number(price2);
+            document.querySelector('.total_money_jewelry_product').innerHTML = "Thành tiền: " + total.toString() + "₫";
+        }
+        function handle_on_input_quantity_product6() {
+            console.log(event.currentTarget.parentElement.querySelector('.price_money_another_product'));
+            var msg = "Thành tiền: ";
+            var price = document.querySelector('.price_money_another_product').innerHTML;
+            var price1 = price.lastIndexOf(".");
+            var price2 = price.slice(10, price1);
+            var total = Number(document.querySelector('.quantity_another_product').value) * Number(price2);
+            document.querySelector('.total_money_another_product').innerHTML = "Thành tiền: " + total.toString() + "₫";
+        }
+         function handle_on_input_quantity_product7() {
+            console.log(event.currentTarget.parentElement.querySelector('.price_money_all_product'));
+            var msg = "Thành tiền: ";
+            var price = document.querySelector('.price_money_all_product').innerHTML;
+            var price1 = price.lastIndexOf(".");
+            var price2 = price.slice(10, price1);
+            var total = Number(document.querySelector('.quantity_all_product').value) * Number(price2);
+            document.querySelector('.total_money_all_product').innerHTML = "Thành tiền: " + total.toString() + "₫";
+        }
+        function handle_submit_form_buy_book_product() {
+            var quantity = Number(document.querySelector('.quantity_book_product').value);
+            if (quantity <= 0) {
+                document.querySelector('.error_input_quantity_book_product').innerHTML="Số lượng sản phẩm phải lớn hơn 0!"
+                document.querySelector('.error_input_quantity_book_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_book_product').style.visibility = 'visible';
+            }
+            else{
+                var remainQuantity=Number(document.querySelector('.remainQuantity_buy_book_product').value);
+                if (quantity>remainQuantity){
+                document.querySelector('.error_input_quantity_book_product').innerHTML="Số lượng sản phẩm muốn mua phải nhỏ hơn số lượng sản phẩm hiện có của mặt hàng!"
+                document.querySelector('.error_input_quantity_book_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_book_product').style.visibility = 'visible';
+                }
+                else{
+                    var msg=document.querySelector('.total_money_book_product').innerHTML;
+                var msg1=msg.lastIndexOf('₫');
+                var msg2=msg.slice(12,msg1);
+                document.querySelector('.Total_buy_book_product').value=msg2+'.0000';
+                document.querySelector('.form_buy_book_product').submit();
+                }
+            }
+        }
+        function handle_submit_form_buy_phone_product() {
+            var quantity = Number(document.querySelector('.quantity_phone_product').value);
+            if (quantity <= 0) {
+                 document.querySelector('.error_input_quantity_phone_product').innerHTML="Số lượng sản phẩm phải lớn hơn 0!"
+                document.querySelector('.error_input_quantity_phone_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_phone_product').style.visibility = 'visible';
+            }
+            else{
+                var remainQuantity=Number(document.querySelector('.remainQuantity_buy_phone_product').value);
+                if (quantity>remainQuantity){
+                document.querySelector('.error_input_quantity_phone_product').innerHTML="Số lượng sản phẩm muốn mua phải nhỏ hơn số lượng sản phẩm hiện có của mặt hàng!"
+                document.querySelector('.error_input_quantity_phone_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_phone_product').style.visibility = 'visible';
+                }
+                else{
+                    var msg=document.querySelector('.total_money_phone_product').innerHTML;
+                var msg1=msg.lastIndexOf('₫');
+                var msg2=msg.slice(12,msg1);
+                document.querySelector('.Total_buy_phone_product').value=msg2+'.0000';
+                document.querySelector('.form_buy_phone_product').submit();
+                }
+            }
+        }
+        function handle_submit_form_buy_camera_product() {
+            var quantity = Number(document.querySelector('.quantity_camera_product').value);
+            if (quantity <= 0) {
+                document.querySelector('.error_input_quantity_camera_product').innerHTML="Số lượng sản phẩm phải lớn hơn 0!"
+                document.querySelector('.error_input_quantity_camera_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_camera_product').style.visibility = 'visible';
+            }
+            else{
+                var remainQuantity=Number(document.querySelector('.remainQuantity_buy_camera_product').value);
+                if (quantity>remainQuantity){
+                document.querySelector('.error_input_quantity_camera_product').innerHTML="Số lượng sản phẩm muốn mua phải nhỏ hơn số lượng sản phẩm hiện có của mặt hàng!"
+                document.querySelector('.error_input_quantity_camera_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_camera_product').style.visibility = 'visible';
+                }
+                else{
+                    var msg=document.querySelector('.total_money_camera_product').innerHTML;
+                var msg1=msg.lastIndexOf('₫');
+                var msg2=msg.slice(12,msg1);
+                document.querySelector('.Total_buy_camera_product').value=msg2+'.0000';
+                document.querySelector('.form_buy_camera_product').submit();
+                }
+            }
+        }
+        function handle_submit_form_buy_shirt_shoe_product() {
+            var quantity = Number(document.querySelector('.quantity_shirt_shoe_product').value);
+            if (quantity <= 0) {
+                document.querySelector('.error_input_quantity_shirt_shoe_product').innerHTML="Số lượng sản phẩm phải lớn hơn 0!"
+                document.querySelector('.error_input_quantity_shirt_shoe_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_shirt_shoe_product').style.visibility = 'visible';
+            }
+            else{
+                var remainQuantity=Number(document.querySelector('.remainQuantity_buy_shirt_shoe_product').value);
+                if (quantity>remainQuantity){
+                document.querySelector('.error_input_quantity_shirt_shoe_product').innerHTML="Số lượng sản phẩm muốn mua phải nhỏ hơn số lượng sản phẩm hiện có của mặt hàng!"
+                document.querySelector('.error_input_quantity_shirt_shoe_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_shirt_shoe_product').style.visibility = 'visible';
+                }
+                else{
+                    var msg=document.querySelector('.total_money_shirt_shoe_product').innerHTML;
+                var msg1=msg.lastIndexOf('₫');
+                var msg2=msg.slice(12,msg1);
+                document.querySelector('.Total_buy_shirt_shoe_product').value=msg2+'.0000';
+                document.querySelector('.form_buy_shirt_shoe_product').submit();
+                }
+            }
+        }
+        function handle_submit_form_buy_laptop_pc_product() {
+            var quantity = Number(document.querySelector('.quantity_laptop_pc_product').value);
+            if (quantity <= 0) {
+                document.querySelector('.error_input_quantity_laptop_pc_product').innerHTML="Số lượng sản phẩm phải lớn hơn 0!"
+                document.querySelector('.error_input_quantity_laptop_pc_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_laptop_pc_product').style.visibility = 'visible';
+            }
+            else{
+                var remainQuantity=Number(document.querySelector('.remainQuantity_buy_laptop_pc_product').value);
+                if (quantity>remainQuantity){
+                document.querySelector('.error_input_quantity_laptop_pc_product').innerHTML="Số lượng sản phẩm muốn mua phải nhỏ hơn số lượng sản phẩm hiện có của mặt hàng!"
+                document.querySelector('.error_input_quantity_laptop_pc_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_laptop_pc_product').style.visibility = 'visible';
+                }
+                else{
+                    var msg=document.querySelector('.total_money_laptop_pc_product').innerHTML;
+                var msg1=msg.lastIndexOf('₫');
+                var msg2=msg.slice(12,msg1);
+                document.querySelector('.Total_buy_laptop_pc_product').value=msg2+'.0000';
+                document.querySelector('.form_buy_laptop_pc_product').submit();
+                }
+            }
+        }
+        function handle_submit_form_buy_jewelry_product() {
+            var quantity = Number(document.querySelector('.quantity_jewelry_product').value);
+            if (quantity <= 0) {
+                document.querySelector('.error_input_quantity_jewelry_product').innerHTML="Số lượng sản phẩm phải lớn hơn 0!"
+                document.querySelector('.error_input_quantity_jewelry_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_jewelry_product').style.visibility = 'visible';
+            }
+            else{
+                var remainQuantity=Number(document.querySelector('.remainQuantity_buy_jewelry_product').value);
+                if (quantity>remainQuantity){
+                document.querySelector('.error_input_quantity_jewelry_product').innerHTML="Số lượng sản phẩm muốn mua phải nhỏ hơn số lượng sản phẩm hiện có của mặt hàng!"
+                document.querySelector('.error_input_quantity_jewelry_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_jewelry_product').style.visibility = 'visible';
+                }
+                else{
+                    var msg=document.querySelector('.total_money_jewelry_product').innerHTML;
+                var msg1=msg.lastIndexOf('₫');
+                var msg2=msg.slice(12,msg1);
+                document.querySelector('.Total_buy_jewelry_product').value=msg2+'.0000';
+                document.querySelector('.form_buy_jewelry_product').submit();
+                }
+            }
+        }
+        function handle_submit_form_buy_another_product() {
+            var quantity = Number(document.querySelector('.quantity_another_product').value);
+            if (quantity <= 0) {
+                document.querySelector('.error_input_quantity_another_product').innerHTML="Số lượng sản phẩm phải lớn hơn 0!"
+                document.querySelector('.error_input_quantity_another_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_another_product').style.visibility = 'visible';
+            }
+            else{
+                var remainQuantity=Number(document.querySelector('.remainQuantity_buy_another_product').value);
+                if (quantity>remainQuantity){
+                document.querySelector('.error_input_quantity_another_product').innerHTML="Số lượng sản phẩm muốn mua phải nhỏ hơn số lượng sản phẩm hiện có của mặt hàng!"
+                document.querySelector('.error_input_quantity_another_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_another_product').style.visibility = 'visible';
+                }
+                else{
+                    var msg=document.querySelector('.total_money_another_product').innerHTML;
+                var msg1=msg.lastIndexOf('₫');
+                var msg2=msg.slice(12,msg1);
+                document.querySelector('.Total_buy_another_product').value=msg2+'.0000';
+                document.querySelector('.form_buy_another_product').submit();
+                }
+            }
+        }
+        function handle_submit_form_buy_all_product() {
+            var quantity = Number(document.querySelector('.quantity_all_product').value);
+            if (quantity <= 0) {
+                document.querySelector('.error_input_quantity_all_product').innerHTML="Số lượng sản phẩm phải lớn hơn 0!"
+                document.querySelector('.error_input_quantity_all_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_all_product').style.visibility = 'visible';
+            }
+            else{
+                var remainQuantity=Number(document.querySelector('.remainQuantity_buy_all_product').value);
+                if (quantity>remainQuantity){
+                document.querySelector('.error_input_quantity_all_product').innerHTML="Số lượng sản phẩm muốn mua phải nhỏ hơn số lượng sản phẩm hiện có của mặt hàng!"
+                document.querySelector('.error_input_quantity_all_product').style.opacity = 1;
+                document.querySelector('.error_input_quantity_all_product').style.visibility = 'visible';
+                }
+                else{
+                var msg=document.querySelector('.total_money_all_product').innerHTML;
+                var msg1=msg.lastIndexOf('₫');
+                var msg2=msg.slice(12,msg1);
+                document.querySelector('.Total_buy_all_product').value=msg2+'.0000';
+                document.querySelector('.form_buy_all_product').submit();
+                }
+            }
+        }
+        function handle_click_quantity_book_product() {
+            document.querySelector('.error_input_quantity_book_product').style.opacity = 0;
+            document.querySelector('.error_input_quantity_book_product').style.visibility = hidden;
+        }
+        function handle_click_quantity_phone_product() {
+            document.querySelector('.error_input_quantity_phone_product').style.opacity = 0;
+            document.querySelector('.error_input_quantity_phone_product').style.visibility = hidden;
+        }
+         function handle_click_quantity_camera_product() {
+            document.querySelector('.error_input_quantity_camera_product').style.opacity = 0;
+            document.querySelector('.error_input_quantity_camera_product').style.visibility = hidden;
+        }
+        function handle_click_quantity_shirt_shoe_product() {
+            document.querySelector('.error_input_quantity_shirt_shoe_product').style.opacity = 0;
+            document.querySelector('.error_input_quantity_shirt_shoe_product').style.visibility = hidden;
+        }
+        function handle_click_quantity_laptop_pc_product() {
+            document.querySelector('.error_input_quantity_laptop_pc_product').style.opacity = 0;
+            document.querySelector('.error_input_quantity_laptop_pc_product').style.visibility = hidden;
+        }
+        function handle_click_quantity_jewelry_product() {
+            document.querySelector('.error_input_quantity_jewelry_product').style.opacity = 0;
+            document.querySelector('.error_input_quantity_jewelry_product').style.visibility = hidden;
+        }
+        function handle_click_quantity_another_product() {
+            document.querySelector('.error_input_quantity_another_product').style.opacity = 0;
+            document.querySelector('.error_input_quantity_another_product').style.visibility = hidden;
+        }
+        function handle_click_quantity_all_product() {
+            document.querySelector('.error_input_quantity_all_product').style.opacity = 0;
+            document.querySelector('.error_input_quantity_all_product').style.visibility = hidden;
+        }
+        function handle_click_card_item_book_product() {
+            var nameProduct = event.target.querySelector('li').innerHTML;
+            document.querySelector('.click_book_product_to_buy').value = nameProduct;
+            document.querySelector('.click_book_product_to_buy').value;
+            document.querySelector('.form_click_book_product_to_buy').submit();
+        }
+        function handle_click_card_item_phone_product(){
+            var nameProduct = event.target.querySelector('li').innerHTML;
+            document.querySelector('.click_phone_product_to_buy').value = nameProduct;
+            document.querySelector('.click_phone_product_to_buy').value;
+            document.querySelector('.form_click_phone_product_to_buy').submit();
+        }
+        function handle_click_card_item_camera_product(){
+            var nameProduct = event.target.querySelector('li').innerHTML;
+            document.querySelector('.click_camera_product_to_buy').value = nameProduct;
+            document.querySelector('.click_camera_product_to_buy').value;
+            document.querySelector('.form_click_camera_product_to_buy').submit();
+        }
+        function handle_click_card_item_shirt_shoe_product(){
+            var nameProduct = event.target.querySelector('li').innerHTML;
+            document.querySelector('.click_shirt_shoe_product_to_buy').value = nameProduct;
+            document.querySelector('.click_shirt_shoe_product_to_buy').value;
+            document.querySelector('.form_click_shirt_shoe_product_to_buy').submit();
+        }
+        function handle_click_card_item_laptop_pc_product(){
+            var nameProduct = event.target.querySelector('li').innerHTML;
+            document.querySelector('.click_laptop_pc_product_to_buy').value = nameProduct;
+            document.querySelector('.click_laptop_pc_product_to_buy').value;
+            document.querySelector('.form_click_laptop_pc_product_to_buy').submit();
+        }
+        function handle_click_card_item_jewelry_product(){
+            var nameProduct = event.target.querySelector('li').innerHTML;
+            document.querySelector('.click_jewelry_product_to_buy').value = nameProduct;
+            document.querySelector('.click_jewelry_product_to_buy').value;
+            document.querySelector('.form_click_jewelry_product_to_buy').submit();
+        }
+        function handle_click_card_item_another_product(){
+            var nameProduct = event.target.querySelector('li').innerHTML;
+            document.querySelector('.click_another_product_to_buy').value = nameProduct;
+            document.querySelector('.click_another_product_to_buy').value;
+            document.querySelector('.form_click_another_product_to_buy').submit();
+        }
+        function handle_click_card_item_all_product(){
+            var nameProduct = event.target.querySelector('li').innerHTML;
+            document.querySelector('.click_all_product_to_buy').value = nameProduct;
+            document.querySelector('.click_all_product_to_buy').value;
+            document.querySelector('.form_click_all_product_to_buy').submit();
+        }
+        function handle_click_card_item_all_product(){
+            var nameProduct = event.target.querySelector('li').innerHTML;
+            document.querySelector('.click_all_product_to_buy').value = nameProduct;
+            document.querySelector('.click_all_product_to_buy').value;
+            document.querySelector('.form_click_all_product_to_buy').submit();
+        }
+        function handle_submit_form_update_product(){
+            console.log('cc');
+        }
+    </script>
+</body>
+
+</html>
